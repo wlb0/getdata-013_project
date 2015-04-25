@@ -2,7 +2,7 @@
 Course project for the Getting and Cleaning Data subject
 
 ## Data
-Background on dataset: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+Background on dataset: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones  
 Data was downloaded from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip, then extracted into the UCI HAR Dataset folder. This is used as the working folder.
 
 ### Summary of data
@@ -20,7 +20,7 @@ Data was downloaded from https://d396qusza40orc.cloudfront.net/getdata%2Fproject
 * 561 variables for each observation
 
 ## Relevant files
-This relates to files in the UCI HAR Dataset folder.
+This relates to files in the UCI HAR Dataset folder.  
 NB. data from the 'train|test/Inertial Signals' folders is not used in the analysis as they are excluded from consideration by step 2 of requirements (ie they are not a '-mean()' or a '-std()' measurement).
 - 'features.txt': List of all 561 features (variables).
 - 'features_info.txt': Shows information about the variables used on the feature vector.
@@ -41,8 +41,8 @@ NB. data from the 'train|test/Inertial Signals' folders is not used in the analy
 - Combine the two modified observation data sets (i.e. including class labels and subject data).
 
 ### 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
-Set column names based on subject, activity (class), and list of variables in 'features.txt'
-NB. there are duplicate variable names, viz. some of those with "-bandsenergy()" in the name. To get around problems later on, force the variable/column names to be unique by appending sequence numbers using make.unique()
+Set column names based on subject, activity (class), and list of variables in 'features.txt'  
+NB. there are duplicate variable names, viz. some of those with "-bandsenergy()" in the name. To get around problems later on, force the variable/column names to be unique by appending sequence numbers using make.unique()  
 Select/extract only the subject, activity, and those features/variables with '-mean()' or '-std()' as part of their name.
 
 ### 3. Uses descriptive activity names to name the activities in the data set.
@@ -58,14 +58,16 @@ With reference to 'features_info.txt', the various components of a variable name
   * whether it's an acceleration or gyroscope signal
   * [optional] whether it's a jerk signal
 * a trailing -X, -Y or -Z in the filename indicates the direction of the signal
-For example, 'tBodyAcc-mean()-X' would translate to "Mean of time domain signal from body acceleration in the X direction". Similarly, 'fBodyBodyGyroJerkMag-std()' would translate to "Standard deviation of magnitude of frequency domain signal from body gyroscope jerk".
+
+For example, 'tBodyAcc-mean()-X' would translate to "Mean of time domain signal from body acceleration in the X direction". Similarly, 'fBodyBodyGyroJerkMag-std()' would translate to "Standard deviation of magnitude of frequency domain signal from body gyroscope jerk".  
 The translation itself is done in Excel, by copying the colnames from the df into a worksheet, using helper columns and various if formulas to build the various components of the description based on the presence of the corresponding components of the variable name, and putting them all together at the end. The resulting list is then fed back into a character vector used to update the column names of the df. See file 'Variable name expansion.xlsx'.
 
-### 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+### 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.  
 Tidy the output of step 4 by 
 * gathering the columns with variable names - these column names should all be values of a variable called "feature"
 * the value in the resulting key-value pair is then the signal reading
 * grouping the gathered result by subject, activity name, and feature
 * summarising the grouped result by calculating the mean of the signal readings.
+
 Write out the result to a text file.
 
